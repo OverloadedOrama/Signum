@@ -20,7 +20,7 @@ Signum is a free and open source text editor, that is made with the Godot Engine
  
  1. Download the Godot Engine [here](https://godotengine.org/download/)
  2. Download the contents of the repository
- 3. Make your own additions!
+ 3. Make your own additions! **_MAKE SURE THAT YOU USE THE GLES2 RENDERER_**
  
  ## Documentation
  Documentation is pending.
