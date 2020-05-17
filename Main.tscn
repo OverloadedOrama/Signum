@@ -1,0 +1,152 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Fonts/Hack-Regular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Fonts/Montserrat-Regular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=3]
+[ext_resource path="res://Fonts/Montserrat-Regular.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 4 )
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.134937, 0.129135, 0.152344, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit" type="TextEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 38.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_fonts/font = ExtResource( 1 )
+highlight_current_line = true
+syntax_highlighting = true
+show_line_numbers = true
+draw_tabs = true
+fold_gutter = true
+highlight_all_occurrences = true
+smooth_scrolling = true
+minimap_draw = true
+caret_block_mode = true
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OpenFileDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -289.0
+margin_top = -185.5
+margin_right = 289.0
+margin_bottom = 185.5
+popup_exclusive = true
+window_title = "Open File"
+resizable = true
+mode = 0
+access = 2
+current_dir = "C:/Users"
+current_path = "C:/Users/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveAsFileDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -311.099
+margin_top = -203.584
+margin_right = 305.901
+margin_bottom = 204.416
+popup_exclusive = true
+resizable = true
+access = 2
+current_dir = "C:/Users"
+current_path = "C:/Users/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 5.0
+margin_right = -10.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileMenu" type="MenuButton" parent="Menu"]
+margin_right = 47.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "File"
+items = [ "Open File", null, 0, false, false, 0, 0, null, "", false, "Save As File", null, 0, false, false, 1, 0, null, "", false, "Save File", null, 0, false, false, 4, 0, null, "", false, "New File", null, 0, false, false, 3, 0, null, "", false, "Quit", null, 0, false, false, 2, 0, null, "", false ]
+switch_on_hover = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HelpMenu" type="MenuButton" parent="Menu"]
+margin_left = 51.0
+margin_right = 110.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "Help"
+items = [ "About", null, 0, false, false, 0, 0, null, "", false, "Github", null, 0, false, false, 1, 0, null, "", false ]
+switch_on_hover = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AboutPopup" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -261.5
+margin_top = -159.5
+margin_right = 261.5
+margin_bottom = 159.5
+custom_fonts/title_font = SubResource( 1 )
+popup_exclusive = true
+window_title = "About"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="AboutPopup"]
+margin_right = 523.0
+margin_bottom = 317.0
+custom_fonts/font = ExtResource( 2 )
+text = "Signum
+-
+Open-source text editor made with Godot!"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="file_selected" from="OpenFileDialog" to="." method="open_file_selected"]
+[connection signal="file_selected" from="SaveAsFileDialog" to="." method="save_as_file_selected"]
